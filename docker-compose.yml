@@ -1,0 +1,36 @@
+name: leperam-twitter-challenge
+services:
+  cassandra-db:
+    image: cassandra:latest
+    container_name: cassandra-db
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'describe keyspaces;'"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+    networks:
+      - app-network
+
+  twitter-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: twitter-backend
+    environment:
+      SPRING_DATA_CASSANDRA_CONTACT_POINTS: "cassandra-db"
+    depends_on:
+      cassandra-db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+volumes:
+  cassandra-data:

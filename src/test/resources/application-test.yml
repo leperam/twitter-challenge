@@ -1,0 +1,13 @@
+spring:
+    application:
+      name: twitter-challenge
+    data:
+      cassandra:
+        keyspace-name: twitter_keyspace
+        local-datacenter: datacenter1
+        schema-action: RECREATE_DROP_UNUSED
+        connect-timeout-millis: 10000ms
+        read-timeout-millis: 10000ms
+        connect-timeout: 10000ms
+        read-timeout: 10000ms
+        pool.pool-timeout: 10000ms

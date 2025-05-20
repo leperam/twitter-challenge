@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "978d7728-5145-49ba-ae48-8be7bcd5a998",
+		"name": "Lepera - Twitter Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "45006426"
+	},
+	"item": [
+		{
+			"name": "Make a Tweet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "user-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"Hi!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{twitter-challenge}}/api/tweet"
+			},
+			"response": []
+		},
+		{
+			"name": "Follow user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "user-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userFollowedId\": \"2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{twitter-challenge}}/api/follow"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Timeline",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "user-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": "{{twitter-challenge}}/api/timeline"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "twitter-challenge",
+			"value": "localhost:8080"
+		}
+	]
+}
