@@ -2,7 +2,7 @@
 _Macarena Lepera_
 
 ## Solución propuesta
-![Diagrama de arquitectura](./docs/DIAGRAMA_COMPONENTES.png)
+![Diagrama de componentes](./docs/DIAGRAMA_COMPONENTES.png)
 
 ### Aplicativo
 - Escalamiento horizontal del Twitter Service
@@ -34,11 +34,11 @@ En caso de ejecutar el servicio manualmente, brindarle la variable de entorno `S
 
 ### Obtención de 'User Timeline'
 
-![Diagrama de arquitectura](./docs/DIAGRAMA_SECUENCIA_USER_TIMELINE.png)
+![Diagrama de secuencia_timeline](./docs/DIAGRAMA_SECUENCIA_USER_TIMELINE.png)
 Orienté el diseño en que la operación más rápida sea el user timeline, en donde una persona, desea ver los tweets de las personas que sigue.
 Generé una tabla UserTimeline que, ante cada tweet, se buscan los seguidores de la persona para luego, hacer un insert en cada seguidor. Tal como se ve en el diagrama de secuencia siguiente.
 
-![Diagrama de arquitectura](./docs/DIAGRAMA_SECUENCIA_TWEET.png)
+![Diagrama de_secuencia_tweet](./docs/DIAGRAMA_SECUENCIA_TWEET.png)
 
 De esta forma, se penalizaron las escrituras, en virtud de tener una carga de home rápida.
 No obstante, detecté cuatro oportunidades de mejora para mejorar el rendimiento. 
@@ -47,7 +47,7 @@ Punto número 1. La persistencia del tweet no afecta la actualización del timel
 Punto número 4. Dependiento de cuán asincrono lo querramos, todo podría ser asincrono. Teniendo como premisa minimizar el tiempo del usuario en pantalla, 
 
 
-![Diagrama de arquitectura](./docs/DIAGRAMA_SECUENCIA_FOLLOW.png)
+![Diagrama de secuencia_follow](./docs/DIAGRAMA_SECUENCIA_FOLLOW.png)
 Por último, el servicio de registro de seguidores.
 
 ### Pruebas sugeridas
